@@ -1,0 +1,11 @@
+public class test3 {
+    public static void main(String[] args) {
+        int [][]matrix = new int[3][3];
+        for(int row = 0; row < matrix.length; row++){
+            for(int col = 0; col < matrix[row].length; col++){
+                matrix[row][col] = (int )(Math.random() * 20);
+            }
+        }
+        System.out.println(matrix[0][0]);
+    }
+}
