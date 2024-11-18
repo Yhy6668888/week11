@@ -1,0 +1,48 @@
+import java.util.Arrays;
+
+public class test11 {
+    public static void main(String[] args) {
+        int[][] weeklyHours = {
+                {2, 4, 3, 5, 8, 8, 7},
+                {3, 4, 3, 4, 4, 0, 0},
+                {3, 3, 3, 3, 2, 2, 0},
+                {9, 3, 4, 7, 4, 1, 0},
+                {3, 5, 3, 6, 3, 8, 4},
+                {3, 4, 4, 6, 3, 4, 0},
+                {7, 4, 8, 3, 8, 3, 0},
+                {3, 5, 7, 6, 9, 2, 9}
+        };
+
+        int[] totalHours = new int[weeklyHours.length];
+        for (int i = 0; i < weeklyHours.length; i++) {
+            for (int j = 0; j < weeklyHours[i].length; j++) {
+                totalHours[i] += weeklyHours[i][j];
+            }
+        }
+
+        // 将员工索引和总时长组合成对象数组
+        EmployeeHour[] employees = new EmployeeHour[weeklyHours.length];
+        for (int i = 0; i < weeklyHours.length; i++) {
+            employees[i] = new EmployeeHour(i, totalHours[i]);
+        }
+
+        // 按照总时长降序排序
+        Arrays.sort(employees, (e1, e2) -> e2.totalHours - e1.totalHours);
+
+        // 显示员工和总时长
+        for (EmployeeHour employee : employees) {
+            System.out.println("Employee " + employee.index + " total hours: " + employee.totalHours);
+        }
+    }
+
+    // 内部类用于存储员工索引和总时长
+    private static class EmployeeHour {
+        int index;
+        int totalHours;
+
+        public EmployeeHour(int index, int totalHours) {
+            this.index = index;
+            this.totalHours = totalHours;
+        }
+    }
+}
