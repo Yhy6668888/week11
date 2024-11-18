@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class test2 {
+    public static void main(String[] args) {
+        int [][] maxtrix =new int[3][3];
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter values in"+maxtrix.length+"rows and "+maxtrix[0].length+"columns");
+        for(int row=0;row<maxtrix.length;row++){
+            for(int col=0;col<maxtrix[0].length;col++){
+                maxtrix[row][col]=sc.nextInt();
+            }
+        }
+        sc.close();
+    }
+}
