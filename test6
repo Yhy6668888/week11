@@ -1,0 +1,38 @@
+
+public class test6 {
+    public static void main(String[] args) {
+        int[][] matrix =new int[3][3];
+        for(int row=0;row< matrix.length;row++)
+        {
+            for(int col=0;col<matrix[row].length;col++)
+            {
+                matrix[row][col]=(int)(Math.random()*20);
+            }
+        }
+
+        int maxOfRow = 0;
+        int indexOfMaxRow = 0;
+
+        // 计算第一行的元素之和
+        int totalOfFirstRow = 0;
+        for (int column = 0; column < matrix[0].length; column++) {
+            totalOfFirstRow += matrix[0][column];
+        }
+        maxOfRow = totalOfFirstRow;
+
+        // 计算其他行的元素之和并与maxOfRow比较
+        int totalOfThisRow = 0;
+        for (int row = 1; row < matrix.length; row++) {
+            for (int column = 0; column < matrix[0].length; column++) {
+                totalOfThisRow += matrix[row][column];
+            }
+            if (totalOfThisRow > maxOfRow) {
+                maxOfRow = totalOfThisRow;
+                indexOfMaxRow = row;
+            }
+            totalOfThisRow = 0;
+        }
+
+        System.out.println("Row " + indexOfMaxRow + " has the maximum sum of " + maxOfRow);
+    }
+}
